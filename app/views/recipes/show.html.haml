@@ -1,0 +1,28 @@
+%p#notice= notice
+%p
+  %strong Title:
+  = @recipe.title
+%p
+  %strong Cooking time:
+  = @recipe.cooking_time
+%p
+  %strong Dificulty level:
+  = @recipe.dificulty_level
+%p
+  %strong Food type:
+  = @recipe.food_type_id
+%p
+  %strong Food preference:
+  = @recipe.food_preference_id
+%p
+  %strong Cuisine:
+  = @recipe.cuisine_id
+%p
+  %strong Ingredients:
+  = @recipe.ingredients
+%p
+  %strong Procedure:
+  = @recipe.procedure
+= link_to 'Edit', edit_recipe_path(@recipe)
+|
+\#{link_to 'Back', recipes_path}

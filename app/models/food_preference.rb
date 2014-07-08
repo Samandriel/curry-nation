@@ -1,3 +1,3 @@
 class FoodPreference < ActiveRecord::Base
-	has_many :recipe
+	has_many :recipes
 end
