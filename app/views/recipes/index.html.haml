@@ -1,30 +1,18 @@
 %h1 Listing recipes
-%table
-  %thead
-    %tr
-      %th Title
-      %th Cooking time
-      %th Dificulty level
-      %th Food type
-      %th Food preference
-      %th Cuisine
-      %th Ingredients
-      %th Procedure
-      %th{:colspan => "3"}
-  %tbody
-    - @recipes.each do |recipe|
-      %tr
-        %td= recipe.title
-        %td= recipe.cooking_time
-        %td= recipe.dificulty_level
-        %td= recipe.food_type.name
-        %td= recipe.food_preference.name
-        %td= recipe.cuisine.name
-        %td= recipe.ingredients
-        %td= recipe.procedure
-        %td= link_to 'Show', recipe
-        - if user_signed_in?
-          %td= link_to 'Edit', edit_recipe_path(recipe)
-          %td= link_to 'Delete', recipe, method: :delete, data: { confirm: 'Are you sure?' }  
+- @recipes.each do |recipe|
+  %ul
+    %li= recipe.title
+    %li= recipe.cooking_time
+    %li= recipe.dificulty_level
+    %li= recipe.food_type.name
+    %li= recipe.food_preference.name
+    %li= recipe.cuisine.name
+    %li= recipe.ingredients
+    %li= recipe.procedure
+    %li= link_to 'Show', recipe
+    - if user_signed_in?
+      .button= link_to 'Edit', edit_recipe_path(recipe)
+      .button= link_to 'Delete', recipe, method: :delete, data: { confirm: 'Are you sure?' }  
 %br/
-= link_to 'New Recipe', new_recipe_path
+
+%a= link_to 'New Recipe', new_recipe_path, {:class => "button"}

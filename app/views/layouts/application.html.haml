@@ -9,13 +9,34 @@
     = csrf_meta_tags
 
   %body
-    - if user_signed_in?
-      = link_to "#{current_user.email}"
-      = link_to "Logout", destroy_user_session_path, method: :delete
-    - else
-      = link_to "Login", new_user_session_path
-      = link_to "SignUp", new_user_registration_path
+    %nav.top-bar
+      %ul.title-area
+        %li.name
+          %h1= link_to "Curry Nation",root_path
+      %section.top-bar-section  
+        %ul.left
+          %li=link_to "Recipes", recipes_path
+        %ul.right             
+          - if user_signed_in?
+            %li= link_to "#{current_user.email}"
+            %li= link_to "Logout", destroy_user_session_path, method: :delete
+          - else
+            %li= link_to "Login", new_user_session_path
+            %li= link_to "SignUp", new_user_registration_path
+.row        
+  .small-4.medium-3.large-2.columns
+    .side-nav-section
+      %ul.side-nav
+        - @food_types.each do |ft|
+          %li= ft.name
+      %ul.side-nav
+        - @food_preferences.each do |fp|
+          %li= fp.name
+      %ul.side-nav    
+        - @cuisines.each do |c|
+          %li= c.name    
+  .small-8.medium-9.large-10.columns
     #{yield}
 
     #{javascript_include_tag 'application', 'data-turbolinks-track' => true }
-    #{javascript_include_tag "application"}
+    #{javascript_include_tag 'application'}
