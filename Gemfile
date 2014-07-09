@@ -43,3 +43,5 @@ gem 'devise'
 gem 'haml-rails'
 gem 'erb2haml'
 gem 'erb2haml-win'
+
+gem 'foundation-rails'
